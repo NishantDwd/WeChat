@@ -29,9 +29,10 @@ Welcome to **WeChat**, a real-time chat application built with the **MERN stack*
 
 ## 🔧 Setup Instructions
 
-### 1. Clone the repository
 
 ```bash
+
+### 1. Clone the repository
 git clone https://github.com/yourusername/wechat.git
 cd wechat
 
