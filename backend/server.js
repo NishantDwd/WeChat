@@ -1,5 +1,6 @@
 // Express server ( npm install express dotenv cookie-parser bcryptjs mongoose socket.io jsonwebtoken)
 //npm install nodemon --save-dev 
+import path from "path";
 import express from "express";
 import dotenv from "dotenv";
 import authRoutes from "./Routes/auth.routes.js";
@@ -8,9 +9,12 @@ import userRoutes from "./Routes/user.routes.js";
 
 import  connect  from "./db/connect.js";
 import cookieParser from "cookie-parser";
+import { app, server } from "./socket/socket.js";
 
-const app = express();
+
 dotenv.config();
+
+const __dirname = path.resolve();
 
 const PORT = process.env.PORT || 5000;
 
@@ -38,13 +42,13 @@ app.use("/api/auth",authRoutes);
 app.use("/api/messages",messageRoutes);
 app.use("/api/users",userRoutes);
 
-// app.get("/",(req,res)=>{
-//     // root route http://localhost:5000/
-//     res.send("Hello Server is Ready!!");
+app.use(express.static(path.join(__dirname, "/frontend/dist")));
 
-// });
+app.get("*", (req, res) => {
+	res.sendFile(path.join(__dirname, "frontend", "dist", "index.html"));
+});
 
-app.listen(PORT,()=> {
+server.listen(PORT,()=> {
     connect();
     console.log(`Server is running on port ${PORT}`);
 });
