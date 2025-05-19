@@ -36,16 +36,10 @@ Welcome to **WeChat**, a real-time chat application built with the **MERN stack*
 git clone https://github.com/yourusername/wechat.git
 cd wechat
 
-### 2. Backend Setup
-cd backend
-npm install
-# Create a .env file and add your Mongo URI & JWT secret
-npm run dev
-
-### 3. Frontend Setup
-cd ../frontend
-npm install
-npm run dev
+In the root folder -
+npm run build
+npm start
+http://localhost:5000/
 
 **Backend API**
 
