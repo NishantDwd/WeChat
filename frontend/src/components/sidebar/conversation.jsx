@@ -7,7 +7,9 @@ const Conversation = ({conversation,lastIdx,emoji}) => {
 
   const isSelected = selectedConvo?._id === conversation._id  
   const {onlineUsers} = useSocketContext();
-  const isOnline = onlineUsers.includes(conversation._id)
+  const isOnline = onlineUsers.includes(String(conversation._id));
+  
+
 
   return (
     <>
@@ -16,7 +18,7 @@ const Conversation = ({conversation,lastIdx,emoji}) => {
         `}
         onClick={()=>setSelectedConvo(conversation)}
         >
-            <div className={`avatar ${isOnline? "online" : ""}`}>
+            <div className={`avatar ${isOnline? "avatar-online" : ""}`}>
                 <div className='w-12 rounded-full '>
                     <img src={conversation.profilepic} alt="user" />
                 </div>
